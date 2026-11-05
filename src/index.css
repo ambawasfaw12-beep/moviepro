@@ -7,7 +7,11 @@
 }
 
 :root{
-    --font-family: arial;
+    --font-family: arial, san-sarif;
     --font-color: #ffffff;
     --font-size: 1.5rem;
+}
+
+body{
+    font-family: var(--font-family);
 }

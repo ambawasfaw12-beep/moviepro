@@ -1,0 +1,55 @@
+.continer {
+    min-height: 700px;
+    padding-top: 70px;
+    background: black;
+}
+
+.overlay {
+    border-image: fill 1 linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.9));
+}
+
+.hero {
+    min-height: calc(700px - 70px);
+    background-image: url("./assets/OIP.webp");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.content {
+    min-height: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--font-color);
+    font-size: var(--font-size);
+    font-family: var(--font-family);
+    gap: 2rem;
+}
+
+.content h1 {
+    font-size: 3rem;
+    text-align: center;
+}
+
+.content p {
+    max-width: 600px;
+    text-align: center;
+}
+
+.expolor-btn {
+    border: none;
+    padding: 0.8rem 2rem;
+    font-size: 1.3rem;
+    color: white;
+    background: #14db14;
+    font-weight: bold;
+    border-radius: 10px;
+    transition: 0.5s background ease-in-out;
+}
+
+.expolor-btn:hover {
+    background: hsl(120, 83%, 37%);
+    transform: translateY(-3px);
+}

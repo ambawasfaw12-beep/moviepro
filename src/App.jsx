@@ -11,12 +11,13 @@ function App() {
 
   return (
     <>
-      <nav>
-        <Link to='/'>Home</Link>|
-        <Link to='/favorite'>Favorite</Link>
-        <Link to='/detail'>Detail</Link>
-        <Link to='/movie'>Movie</Link>
-
+      <nav className='navigation_bar'>
+        <div>
+          <Link className='nav-link' to='/'>Home</Link>
+          <Link className='nav-link'  to='/favorite'>Favorite</Link>
+          <Link className='nav-link'  to='/detail'>Detail</Link>
+          <Link className='nav-link'  to='/movie'>Movie</Link>
+        </div>
       </nav>
 
       <Routes>

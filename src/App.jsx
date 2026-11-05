@@ -24,13 +24,14 @@ function App() {
     const response = await fetch(
       `https://api.themoviedb.org/3/movie/top_rated?api_key=${api_key}`
     )
-    const trending = await response.json()
-    setTopRated(t => t = trending.results)
+    const torate = await response.json()
+    setTopRated(t => t = torate.results)
   }
 
 
   useEffect(() => {
     getTrandingMovie()
+    getMostReted()
   }, [])
 
 
@@ -47,7 +48,7 @@ function App() {
       </nav>
 
       <Routes>
-        <Route path='/' element={<Home trandingMovies={trandingMovies} topRated={topRated} />} />
+        <Route path='/' element={<Home trandingMovies={trandingMovies} topRateds={topRated} />} />
         <Route path='/favorite' element={<Favorite />} />
         <Route path='/detail' element={<Detail />} />
         <Route path='/movie' element={<Movie />} />

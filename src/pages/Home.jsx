@@ -1,6 +1,7 @@
+import MovieCard from '../COMPONET/Moviecar'
 import '../Home.css'
 
-function Home({ trandingMovies }) {
+function Home({ trandingMovies, topRateds }) {
 
     return (
         <>
@@ -15,26 +16,11 @@ function Home({ trandingMovies }) {
                         <button className='expolor-btn'>Explore Movies</button>
                     </div>
                 </header>
-
-
             </div>
-            <section className='sextion-conteiner'>
 
-                <h2>Tranding movies</h2>
-                <div className='slider-container'>
-                    <div className='tranding_card'>
-                        {trandingMovies.map(trandingMovie => <div className="movie-card" key={trandingMovie.id}>
-                            <h3>{trandingMovie.title}</h3>
-                            <img
-                                src={`https://image.tmdb.org/t/p/w500${trandingMovie.poster_path}`}
-                                alt={trandingMovie.title}
-                            />
-                        </div>)}
+            <MovieCard datas={trandingMovies} />
+            <MovieCard datas={topRateds} />
 
-                    </div>
-
-                </div>
-            </section>
         </>
     )
 }

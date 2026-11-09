@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import '../Home.css'
@@ -14,7 +13,7 @@ function MovieCard({ datas }) {
             <div className='slider-container' >
                 <div className='tranding_card'>
                     {datas.map(data =>
-                        <Link key={data.id} to={`/movie/:${data.id}`} className='link'>
+                        <Link key={data.id} to={`/movie/${data.id}`} className='link'>
                             <div className="movie-card"  >
                                 <h3>{data.title}</h3>
                                 <img

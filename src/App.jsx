@@ -8,7 +8,7 @@ import './App.css'
 
 function App() {
 
-  const api_key = "89d88dac6627f87412f6f29376c0915f"
+const api_key = "89d88dac6627f87412f6f29376c0915f"
 
   const [trandingMovies, setTrandingMovies] = useState([])
   const [topRated, setTopRated] = useState([])
@@ -17,7 +17,6 @@ function App() {
     const response = await fetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=${api_key}`)
     const trending = await response.json()
     setTrandingMovies(t => t = trending.results)
-    console.log(trending)
   }
 
   const getMostReted = async () => {
@@ -42,7 +41,7 @@ function App() {
         <div>
           <Link className='nav-link' to='/'>Home</Link>
           <Link className='nav-link' to='/favorite'>Favorite</Link>
-          <Link className='nav-link' to='/movie/:id'>Movie</Link>
+          <Link className='nav-link' to='/movie/id'>Movie</Link>
         </div>
       </nav>
 

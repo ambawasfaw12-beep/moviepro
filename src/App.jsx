@@ -3,7 +3,6 @@ import { useState, useEffect, createContext } from 'react'
 import { Routes, Route, Link } from 'react-router-dom'
 import Home from './pages/Home'
 import Favorite from './pages/Favorite'
-import Detail from './pages/Detail'
 import Movie from './pages/Movie'
 import './App.css'
 
@@ -18,6 +17,7 @@ function App() {
     const response = await fetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=${api_key}`)
     const trending = await response.json()
     setTrandingMovies(t => t = trending.results)
+    console.log(trending)
   }
 
   const getMostReted = async () => {
@@ -42,16 +42,14 @@ function App() {
         <div>
           <Link className='nav-link' to='/'>Home</Link>
           <Link className='nav-link' to='/favorite'>Favorite</Link>
-          <Link className='nav-link' to='/detail'>Detail</Link>
-          <Link className='nav-link' to='/movie'>Movie</Link>
+          <Link className='nav-link' to='/movie/:id'>Movie</Link>
         </div>
       </nav>
 
       <Routes>
         <Route path='/' element={<Home trandingMovies={trandingMovies} topRateds={topRated} />} />
         <Route path='/favorite' element={<Favorite />} />
-        <Route path='/detail' element={<Detail />} />
-        <Route path='/movie' element={<Movie />} />
+        <Route path='/movie/:id' element={<Movie />} />
       </Routes>
 
     </>

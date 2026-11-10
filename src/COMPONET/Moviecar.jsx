@@ -1,3 +1,4 @@
+import { useState, createContext, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import unfiled from '../assets/gray heart.png'
 import filed from '../assets/Red Heart.png'
@@ -7,9 +8,26 @@ import './Moviecar.css'
 
 function MovieCard({ datas }) {
 
+    const [favorites, setFavorites] = useState([])
+
+    const handleFavorite = (event, movie) => {
+        event.stopPropagation();
+        event.preventDefault();
+
+        const isMovieFavorite = favorites.some(
+            fav => fav.id === movie.id
+        );
+
+        if (isMovieFavorite) {
+            setFavorites(
+                favorites.filter(fav => fav.id !== movie.id)
+            );
+        } else {
+            setFavorites([...favorites, movie]);
+        }
+    };
+
     return (
-
-
         <section className='sextion-conteiner'>
             <h2>Top Rated movies</h2>
             <div className='slider-container' >
@@ -22,7 +40,19 @@ function MovieCard({ datas }) {
                                     src={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
                                     alt={data.title}
                                 />
-                                <button className='favBtn'><img  src={unfiled} alt="hallow hear shape" /></button>
+                                <button
+                                    onClick={(event) => handleFavorite(event, data)}
+                                    className="favBtn"
+                                >
+                                    <img
+                                        src={
+                                            favorites.some(fav => fav.id === data.id)
+                                                ? filed
+                                                : unfiled
+                                        }
+                                        alt=""
+                                    />
+                                </button>
                             </div>
                         </Link>
                     )}

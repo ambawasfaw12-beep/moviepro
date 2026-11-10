@@ -19,9 +19,12 @@ function Movie() {
         handleDetail()
     }, [id])
 
+    if(id == "id" || id == ''){
+        return
+    }
 
     return (
-        <div className="bg">
+        
             <div className="movie-page">
 
                 <div className="movie-poster">
@@ -48,8 +51,6 @@ function Movie() {
                 </div>
 
             </div>
-        </div>
-
     )
 }
 

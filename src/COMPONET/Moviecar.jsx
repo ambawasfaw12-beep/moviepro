@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom'
+import unfiled from '../assets/gray heart.png'
+import filed from '../assets/Red Heart.png'
 
 import '../Home.css'
 import './Moviecar.css'
@@ -20,6 +22,7 @@ function MovieCard({ datas }) {
                                     src={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
                                     alt={data.title}
                                 />
+                                <button className='favBtn'><img  src={unfiled} alt="hallow hear shape" /></button>
                             </div>
                         </Link>
                     )}

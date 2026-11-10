@@ -6,12 +6,15 @@ import Favorite from './pages/Favorite'
 import Movie from './pages/Movie'
 import './App.css'
 
+export const FavoriteContext = createContext();
+
 function App() {
 
-const api_key = "89d88dac6627f87412f6f29376c0915f"
+  const api_key = "89d88dac6627f87412f6f29376c0915f"
 
   const [trandingMovies, setTrandingMovies] = useState([])
   const [topRated, setTopRated] = useState([])
+  const [favorites, setFavorites] = useState([])
 
   const getTrandingMovie = async () => {
     const response = await fetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=${api_key}`)
@@ -45,13 +48,15 @@ const api_key = "89d88dac6627f87412f6f29376c0915f"
         </div>
       </nav>
 
-      <Routes>
-        <Route path='/' element={<Home trandingMovies={trandingMovies} topRateds={topRated} />} />
-        <Route path='/favorite' element={<Favorite />} />
-        <Route path='/movie/:id' element={<Movie />} />
-      </Routes>
-
+      <FavoriteContext.Provider value={{favorites, setFavorites}}>
+        <Routes>
+          <Route path='/' element={<Home trandingMovies={trandingMovies} topRateds={topRated} />} />
+          <Route path='/favorite' element={<Favorite />} />
+          <Route path='/movie/:id' element={<Movie />} />
+        </Routes>
+      </FavoriteContext.Provider>
     </>
+
   )
 }
 

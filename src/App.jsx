@@ -15,6 +15,15 @@ function App() {
   const [trandingMovies, setTrandingMovies] = useState([])
   const [topRated, setTopRated] = useState([])
   const [favorites, setFavorites] = useState([])
+  const [search, setSearch] = useState("")
+  const [searchResults, setSearchResults] = useState([])
+
+  const searchMovies = async () => {
+    const response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=${search}`)
+    const searchedMovies = await response.json()
+    setSearchResults(searchedMovies.results)
+  }
+
 
   const getTrandingMovie = async () => {
     const response = await fetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=${api_key}`)
@@ -44,13 +53,19 @@ function App() {
         <div>
           <Link className='nav-link' to='/'>Home</Link>
           <Link className='nav-link' to='/favorite'>Favorite</Link>
-          <Link className='nav-link' to='/movie/id'>Movie</Link>
         </div>
       </nav>
 
-      <FavoriteContext.Provider value={{favorites, setFavorites}}>
+      <FavoriteContext.Provider value={{ favorites, setFavorites }}>
         <Routes>
-          <Route path='/' element={<Home trandingMovies={trandingMovies} topRateds={topRated} />} />
+          <Route path='/' element={<Home
+            trandingMovies={trandingMovies}
+            topRateds={topRated}
+            search={search}
+            setSearch={setSearch}
+            searchMovies={searchMovies}
+            searchResults={searchResults}
+          />} />
           <Route path='/favorite' element={<Favorite />} />
           <Route path='/movie/:id' element={<Movie />} />
         </Routes>

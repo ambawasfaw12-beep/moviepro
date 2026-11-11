@@ -1,10 +1,25 @@
+import { useState } from 'react'
 import MovieCard from '../COMPONET/Moviecar'
+import searchIcon from '../assets/search.svg'
 import '../Home.css'
 
-function Home({ trandingMovies, topRateds }) {
+function Home({
+    trandingMovies,
+    topRateds,
+    search,
+    setSearch,
+    searchMovies,
+    searchResults
+}) {
+
+    const handleSubmit = event => {
+        event.preventDefault();
+        searchMovies();
+    }
 
     return (
-        <>
+        <div className='parent'>
+
             <div className="continer">
                 <header className="hero overlay">
                     <div className='content'>
@@ -17,11 +32,29 @@ function Home({ trandingMovies, topRateds }) {
                     </div>
                 </header>
             </div>
+            <form onSubmit={handleSubmit}>
+                <input
+                    type="text"
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                    placeholder='Search'
+                    className='searchInput'
+                />
+                <button type='submit'><img src={searchIcon} alt="searchIcon" /></button>
+            </form>
 
-            <MovieCard datas={trandingMovies} />
-            <MovieCard datas={topRateds} />
+            {
+                searchResults.length > 0 ? (
+                    <MovieCard datas={searchResults} />
+                ) : (
+                    <>
+                        <MovieCard datas={trandingMovies} />
+                        <MovieCard datas={topRateds} />
+                    </>
+                )
+            }
 
-        </>
+        </div>
     )
 }
 

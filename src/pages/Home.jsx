@@ -45,11 +45,21 @@ function Home({
 
             {
                 searchResults.length > 0 ? (
-                    <MovieCard datas={searchResults} />
+                    <div className='con'>
+                        <h2>Searched Movies</h2>
+                        <MovieCard datas={searchResults} />
+                    </div>
+
                 ) : (
                     <>
-                        <MovieCard datas={trandingMovies} />
-                        <MovieCard datas={topRateds} />
+                        <div className='con'>
+                            <h2>Trending Movies</h2>
+                            <MovieCard datas={trandingMovies} />
+                        </div>
+                        <div className='con'>
+                            <h2>Top Rated movies</h2>
+                            <MovieCard datas={topRateds} />
+                        </div>
                     </>
                 )
             }

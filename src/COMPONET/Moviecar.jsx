@@ -28,7 +28,7 @@ const {favorites, setFavorites} = useContext(FavoriteContext)
 
     return (
             <section className='sextion-conteiner'>
-                <h2>Top Rated movies</h2>
+                
                 <div className='slider-container' >
                     <div className='tranding_card'>
                         {datas.map(data =>
